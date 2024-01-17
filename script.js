@@ -24,7 +24,11 @@ function saveScore() {
 function showScores() {
   // complete the code
 	const user = JSON.parse(localStorage.getItem('arr'))
-	user.map((data)=>{
+	if(user.length>0){
+		while (tbody.lastChild) {
+        tbody.removeChild(tbody.lastChild);
+    }
+		user.map((data)=>{
 		const tr = document.createElement('tr');
 		const tdName = document.createElement('td');
 		const tdSc = document.createElement('td');
@@ -34,5 +38,9 @@ function showScores() {
 		tr.appendChild(tdSc)
 		tbody.appendChild(tr);
 	})
+	}else{
+		scores.innerText = "No Scores yes"
+	}
+	
 	
 }
