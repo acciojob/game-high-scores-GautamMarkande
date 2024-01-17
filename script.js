@@ -2,7 +2,23 @@
 const nameInput = document.getElementById("name");
 const scoreInput = document.getElementById("score");
 const scores = document.getElementById("scores");
-const tbody = document.getElementById("tbody");
+const body = document.querySelector('body')
+const table = document.createElement('table')
+const tbody = document.createElement('tbody')
+const tr = document.createElement('tr');
+const thead=document.createElement('thead')
+const th1=document.createElement('th')
+const th2=document.createElement('th')
+
+th1.innerText = "Name"
+th2.innerText = "Score"
+tr.appendChild(th1);
+tr.appendChild(th2)
+thead.appendChild(tr);
+table.appendChild(thead)
+table.appendChild(tbody)
+body.appendChild(table)
+
 
 // Save score to Local Sto
 
@@ -39,7 +55,7 @@ function showScores() {
 		tbody.appendChild(tr);
 	})
 	}else{
-		scores.innerText = "No Scores yes"
+		scores.innerText = "No Scores yet"
 	}
 	
 	
