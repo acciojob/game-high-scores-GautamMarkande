@@ -4,18 +4,35 @@ const scoreInput = document.getElementById("score");
 const scores = document.getElementById("scores");
 const tbody = document.getElementById("tbody");
 
-// Save score to Local Storage
+// Save score to Local Sto
+
+localStorage.setItem('arr',JSON.stringify([]))
 function saveScore() {
   // complete the code here
-	const larr = [];
-	localStorage.setItem('arr',JOSN.stringify(arr))
-	const arr = [];
+	const obj={
+		Name:nameInput.value,
+		Score:scoreInput.value
+	}
 	
-	localStorage.setItem('arr',[{name:}])
+	const arr = JSON.parse(localStorage.getItem('arr'))
+	arr.push(obj)
+	localStorage.setItem('arr',JSON.stringify(arr))
   showScores();
 }
 
 // Show scores in div
 function showScores() {
   // complete the code
+	const user = JSON.parse(localStorage.getItem('arr'))
+	user.map((data)=>{
+		const tr = document.createElement('tr');
+		const tdName = document.createElement('td');
+		const tdSc = document.createElement('td');
+		tdName.innerText = data.Name;
+		tdSc.innerText = data.Score;
+		tr.appendChild(tdName)
+		tr.appendChild(tdSc)
+		tbody.appendChild(tr);
+	})
+	
 }
